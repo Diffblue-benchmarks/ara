@@ -5,7 +5,7 @@ NOTE: ARA is using Semantic Versioning: https://semver.org/ +
 ////
 Notes to developers filling this file:
 
-Do not forget to change the version number by running this in the root "ara-parent" project:
+Do not forget to change the version number by running this in the root "com.decathlon.ara-parent" project:
 mvn -DnewVersion=X.Y.Z -DgenerateBackupPoms=false versions:set
 
 Each line is preceded by either:
@@ -40,7 +40,7 @@ and https://www.screentogif.com/ for animated-GIFs.
 
 * *[FIX]* Fix an issue where a Swagger dependency can't be downloaded on first install.
 * *[FEATURE]* Release ARA source code under Apache 2 license on Github :
-https://github.com/decathlon/ara
+https://github.com/decathlon/com.decathlon.ara
 
 == 3.0.1
 
@@ -123,7 +123,7 @@ First version of ARA with a release of the source code.
 === User-Visible Changes
 
 * *[FEATURE]* The ARA-logo in top-left menu-bar is now clickable to go to homepage of the default project: +
-  image:doc/changelog/clickable-ara-logo.png[]
+  image:doc/changelog/clickable-com.decathlon.ara-logo.png[]
 * *[FEATURE]* The demo project is now complete, with coherent data, and with a user documentation linked on the homepage
   of the demo project in ARA:
   image:doc/changelog/demo-project-help.png[]
@@ -172,7 +172,7 @@ First version of ARA with a release of the source code.
 === Technical Changes
 
 * *[BREAKING CHANGE]* Starting version numbering, as ARA now has a public library
-* *[FEATURE]* Added the `ara-lib` dependency to include in projects to help them:
+* *[FEATURE]* Added the `com.decathlon.ara-lib` dependency to include in projects to help them:
   ** extract Cucumber step definitions into a stepDefinitions.json for ARA
   ** create structured embeddings to embed in Cucumber reports for ARA
   ** parse structured embeddings for analysis purpose

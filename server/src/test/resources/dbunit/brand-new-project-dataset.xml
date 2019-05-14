@@ -6,7 +6,7 @@
 
     <!-- Setting -->
     <setting id="1" project_id="2" code="execution.indexer.file.executionBasePath"
-             value="/tmp/ara/executions/custom/{{project}}/{{branch}}/{{cycle}}" />
+             value="/tmp/com.decathlon.ara/executions/custom/{{project}}/{{branch}}/{{cycle}}" />
 
     <!-- Cycle Definition -->
     <cycle_definition id="1" project_id="2" branch="develop" name="day" branch_position="1" />

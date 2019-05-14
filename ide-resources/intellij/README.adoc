@@ -18,11 +18,11 @@ And for a Linux user:
 
 In Intellij's codestyles preferences folder, type:
 
-`ln -s <PATH_TO_ARA_REPOSITORY>/ide-resources/intellij/codestyles/ara-code-style.xml .`
+`ln -s <PATH_TO_ARA_REPOSITORY>/ide-resources/intellij/codestyles/com.decathlon.ara-code-style.xml .`
 
 Or, on Windows:
 
-`mklink ara-code-style.xml <PATH_TO_ARA_REPOSITORY>\ide-resources\intellij\codestyles\ara-code-style.xml
+`mklink com.decathlon.ara-code-style.xml <PATH_TO_ARA_REPOSITORY>\ide-resources\intellij\codestyles\com.decathlon.ara-code-style.xml
 
 You may want to remove all other code style file, so Intellij can automatically
 set default ARA's code style. If not, you need to set manually the code style in

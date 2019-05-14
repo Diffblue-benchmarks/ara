@@ -12,11 +12,11 @@ services:
   server:
     image: __SERVER_TAG__
     volumes:
-      - __DATA_DIR__/server:/opt/ara/data
+      - __DATA_DIR__/server:/opt/com.decathlon.ara/data
     ports:
       - "__SERVER_PORT__:8080"
     expose:
       - 8080
     depends_on:
       - db
-    command: "--spring.datasource.url=jdbc:mysql://host.docker.internal:__DB_PORT__/ara?useUnicode=yes&characterEncoding=UTF-8"
+    command: "--spring.datasource.url=jdbc:mysql://host.docker.internal:__DB_PORT__/com.decathlon.ara?useUnicode=yes&characterEncoding=UTF-8"

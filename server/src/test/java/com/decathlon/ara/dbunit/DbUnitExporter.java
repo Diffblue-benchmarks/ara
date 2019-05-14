@@ -34,7 +34,7 @@ public class DbUnitExporter {
     public void export() {
         try (Session session = entityManager.unwrap(Session.class)) {
             session.doWork(jdbcConnection -> {
-                // Can be launched in "ara" parent-module or in "ara/server" sub-module
+                // Can be launched in "com.decathlon.ara" parent-module or in "com.decathlon.ara/server" sub-module
                 boolean inServerModule = System.getProperty("user.dir").endsWith("server");
                 String xmlPath = (inServerModule ? "" : "server/") + XML_PATH;
                 try (OutputStream outputStream = new FileOutputStream(xmlPath)) {

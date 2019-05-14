@@ -133,12 +133,12 @@ public class FeatureResourceIT {
     public void test_should_send_error_when_default_of_not_existing_one() {
         ResponseEntity<FeatureDTO> defaultSettingResponse = cut.retrieveDefaultSetting("nope");
         Assertions.assertThat(defaultSettingResponse.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
-        Assertions.assertThat(defaultSettingResponse.getHeaders()).containsKey("X-ara-error");
-        Assertions.assertThat(defaultSettingResponse.getHeaders().get("X-ara-error")).hasSize(1);
-        Assertions.assertThat(defaultSettingResponse.getHeaders().get("X-ara-error").get(0)).isEqualTo("error.not_found");
-        Assertions.assertThat(defaultSettingResponse.getHeaders()).containsKey("X-ara-message");
-        Assertions.assertThat(defaultSettingResponse.getHeaders().get("X-ara-message")).hasSize(1);
-        Assertions.assertThat(defaultSettingResponse.getHeaders().get("X-ara-message").get(0)).isEqualTo("The feature 'nope' doesn't exists.");
+        Assertions.assertThat(defaultSettingResponse.getHeaders()).containsKey("X-com.decathlon.ara-error");
+        Assertions.assertThat(defaultSettingResponse.getHeaders().get("X-com.decathlon.ara-error")).hasSize(1);
+        Assertions.assertThat(defaultSettingResponse.getHeaders().get("X-com.decathlon.ara-error").get(0)).isEqualTo("error.not_found");
+        Assertions.assertThat(defaultSettingResponse.getHeaders()).containsKey("X-com.decathlon.ara-message");
+        Assertions.assertThat(defaultSettingResponse.getHeaders().get("X-com.decathlon.ara-message")).hasSize(1);
+        Assertions.assertThat(defaultSettingResponse.getHeaders().get("X-com.decathlon.ara-message").get(0)).isEqualTo("The feature 'nope' doesn't exists.");
     }
 
     @Test
@@ -146,12 +146,12 @@ public class FeatureResourceIT {
         // Try to update a not existing feature
         ResponseEntity<DetailledFeatureDTO> failedUpdateResponse = cut.update("nope", false);
         Assertions.assertThat(failedUpdateResponse.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
-        Assertions.assertThat(failedUpdateResponse.getHeaders()).containsKey("X-ara-error");
-        Assertions.assertThat(failedUpdateResponse.getHeaders().get("X-ara-error")).hasSize(1);
-        Assertions.assertThat(failedUpdateResponse.getHeaders().get("X-ara-error").get(0)).isEqualTo("error.not_found");
-        Assertions.assertThat(failedUpdateResponse.getHeaders()).containsKey("X-ara-message");
-        Assertions.assertThat(failedUpdateResponse.getHeaders().get("X-ara-message")).hasSize(1);
-        Assertions.assertThat(failedUpdateResponse.getHeaders().get("X-ara-message").get(0)).isEqualTo("Unknown feature(s) 'nope'.");
+        Assertions.assertThat(failedUpdateResponse.getHeaders()).containsKey("X-com.decathlon.ara-error");
+        Assertions.assertThat(failedUpdateResponse.getHeaders().get("X-com.decathlon.ara-error")).hasSize(1);
+        Assertions.assertThat(failedUpdateResponse.getHeaders().get("X-com.decathlon.ara-error").get(0)).isEqualTo("error.not_found");
+        Assertions.assertThat(failedUpdateResponse.getHeaders()).containsKey("X-com.decathlon.ara-message");
+        Assertions.assertThat(failedUpdateResponse.getHeaders().get("X-com.decathlon.ara-message")).hasSize(1);
+        Assertions.assertThat(failedUpdateResponse.getHeaders().get("X-com.decathlon.ara-message").get(0)).isEqualTo("Unknown feature(s) 'nope'.");
 
         // Update all should do nothing if one feature doesn't exists in the list.
         List<FeatureDTO> listToUpdate = new ArrayList<>();
@@ -161,12 +161,12 @@ public class FeatureResourceIT {
         listToUpdate.add(newFeature2);
         ResponseEntity<List<FeatureDTO>> listUpdatedResponse = cut.updateAll(listToUpdate);
         Assertions.assertThat(listUpdatedResponse.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
-        Assertions.assertThat(listUpdatedResponse.getHeaders()).containsKey("X-ara-error");
-        Assertions.assertThat(listUpdatedResponse.getHeaders().get("X-ara-error")).hasSize(1);
-        Assertions.assertThat(listUpdatedResponse.getHeaders().get("X-ara-error").get(0)).isEqualTo("error.not_found");
-        Assertions.assertThat(listUpdatedResponse.getHeaders()).containsKey("X-ara-message");
-        Assertions.assertThat(listUpdatedResponse.getHeaders().get("X-ara-message")).hasSize(1);
-        Assertions.assertThat(listUpdatedResponse.getHeaders().get("X-ara-message").get(0)).isEqualTo("Unknown feature(s) 'nope'.");
+        Assertions.assertThat(listUpdatedResponse.getHeaders()).containsKey("X-com.decathlon.ara-error");
+        Assertions.assertThat(listUpdatedResponse.getHeaders().get("X-com.decathlon.ara-error")).hasSize(1);
+        Assertions.assertThat(listUpdatedResponse.getHeaders().get("X-com.decathlon.ara-error").get(0)).isEqualTo("error.not_found");
+        Assertions.assertThat(listUpdatedResponse.getHeaders()).containsKey("X-com.decathlon.ara-message");
+        Assertions.assertThat(listUpdatedResponse.getHeaders().get("X-com.decathlon.ara-message")).hasSize(1);
+        Assertions.assertThat(listUpdatedResponse.getHeaders().get("X-com.decathlon.ara-message").get(0)).isEqualTo("Unknown feature(s) 'nope'.");
         ResponseEntity<DetailledFeatureDTO> untouchedFeature = cut.describe("my-feature");
         Assertions.assertThat(untouchedFeature.getBody()).isNotNull();
         Assertions.assertThat(untouchedFeature.getBody().isEnabled()).isFalse();
@@ -177,12 +177,12 @@ public class FeatureResourceIT {
         // Try to reset a not existing feature
         ResponseEntity<DetailledFeatureDTO> failedUpdateResponse = cut.reset("nope");
         Assertions.assertThat(failedUpdateResponse.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
-        Assertions.assertThat(failedUpdateResponse.getHeaders()).containsKey("X-ara-error");
-        Assertions.assertThat(failedUpdateResponse.getHeaders().get("X-ara-error")).hasSize(1);
-        Assertions.assertThat(failedUpdateResponse.getHeaders().get("X-ara-error").get(0)).isEqualTo("error.not_found");
-        Assertions.assertThat(failedUpdateResponse.getHeaders()).containsKey("X-ara-message");
-        Assertions.assertThat(failedUpdateResponse.getHeaders().get("X-ara-message")).hasSize(1);
-        Assertions.assertThat(failedUpdateResponse.getHeaders().get("X-ara-message").get(0)).isEqualTo("Unknown feature(s) 'nope'.");
+        Assertions.assertThat(failedUpdateResponse.getHeaders()).containsKey("X-com.decathlon.ara-error");
+        Assertions.assertThat(failedUpdateResponse.getHeaders().get("X-com.decathlon.ara-error")).hasSize(1);
+        Assertions.assertThat(failedUpdateResponse.getHeaders().get("X-com.decathlon.ara-error").get(0)).isEqualTo("error.not_found");
+        Assertions.assertThat(failedUpdateResponse.getHeaders()).containsKey("X-com.decathlon.ara-message");
+        Assertions.assertThat(failedUpdateResponse.getHeaders().get("X-com.decathlon.ara-message")).hasSize(1);
+        Assertions.assertThat(failedUpdateResponse.getHeaders().get("X-com.decathlon.ara-message").get(0)).isEqualTo("Unknown feature(s) 'nope'.");
 
         // Reset all should do nothing if one feature doesn't exists in the list.
         List<String> listToReset = new ArrayList<>();
@@ -191,12 +191,12 @@ public class FeatureResourceIT {
         listToReset.add("nope");
         ResponseEntity<List<FeatureDTO>> listUpdatedResponse = cut.resetAll(listToReset);
         Assertions.assertThat(listUpdatedResponse.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
-        Assertions.assertThat(listUpdatedResponse.getHeaders()).containsKey("X-ara-error");
-        Assertions.assertThat(failedUpdateResponse.getHeaders().get("X-ara-error")).hasSize(1);
-        Assertions.assertThat(listUpdatedResponse.getHeaders().get("X-ara-error").get(0)).isEqualTo("error.not_found");
-        Assertions.assertThat(listUpdatedResponse.getHeaders()).containsKey("X-ara-message");
-        Assertions.assertThat(failedUpdateResponse.getHeaders().get("X-ara-message")).hasSize(1);
-        Assertions.assertThat(listUpdatedResponse.getHeaders().get("X-ara-message").get(0)).isEqualTo("Unknown feature(s) 'nope'.");
+        Assertions.assertThat(listUpdatedResponse.getHeaders()).containsKey("X-com.decathlon.ara-error");
+        Assertions.assertThat(failedUpdateResponse.getHeaders().get("X-com.decathlon.ara-error")).hasSize(1);
+        Assertions.assertThat(listUpdatedResponse.getHeaders().get("X-com.decathlon.ara-error").get(0)).isEqualTo("error.not_found");
+        Assertions.assertThat(listUpdatedResponse.getHeaders()).containsKey("X-com.decathlon.ara-message");
+        Assertions.assertThat(failedUpdateResponse.getHeaders().get("X-com.decathlon.ara-message")).hasSize(1);
+        Assertions.assertThat(listUpdatedResponse.getHeaders().get("X-com.decathlon.ara-message").get(0)).isEqualTo("Unknown feature(s) 'nope'.");
         ResponseEntity<DetailledFeatureDTO> untouchedFeature = cut.describe("my-feature");
         Assertions.assertThat(untouchedFeature.getBody()).isNotNull();
         Assertions.assertThat(untouchedFeature.getBody().isEnabled()).isTrue();

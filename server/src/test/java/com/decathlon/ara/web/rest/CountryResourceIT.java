@@ -60,8 +60,8 @@ public class CountryResourceIT {
         // THEN
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
         assertThat(response.getHeaders().getLocation().getPath()).isEqualTo("/api/projects/p/countries/cd");
-        assertThat(response.getHeaders().get("X-ara-alert")).containsExactly("ara.country.created");
-        assertThat(response.getHeaders().get("X-ara-params")).containsExactly("cd");
+        assertThat(response.getHeaders().get("X-com.decathlon.ara-alert")).containsExactly("com.decathlon.ara.country.created");
+        assertThat(response.getHeaders().get("X-com.decathlon.ara-params")).containsExactly("cd");
         assertThat(response.getBody().getCode()).isEqualTo("cd");
         assertThat(response.getBody().getName()).isEqualTo("some-name");
         final CountryDTO reReadDto = getByCode("cd");
@@ -83,8 +83,8 @@ public class CountryResourceIT {
         assertThat(header(response, HeaderUtil.ERROR)).isEqualTo("error.not_unique");
         assertThat(header(response, HeaderUtil.PARAMS)).isEqualTo("country");
         assertThat(header(response, HeaderUtil.MESSAGE)).isEqualTo("The code is already used by another country.");
-        assertThat(response.getHeaders().get("X-ara-duplicatePropertyName")).containsExactly("code");
-        assertThat(response.getHeaders().get("X-ara-otherEntityKey")).containsExactly("be");
+        assertThat(response.getHeaders().get("X-com.decathlon.ara-duplicatePropertyName")).containsExactly("code");
+        assertThat(response.getHeaders().get("X-com.decathlon.ara-otherEntityKey")).containsExactly("be");
         assertThatTableHasNotChangedInDataBase();
     }
 
@@ -103,8 +103,8 @@ public class CountryResourceIT {
         assertThat(header(response, HeaderUtil.ERROR)).isEqualTo("error.not_unique");
         assertThat(header(response, HeaderUtil.PARAMS)).isEqualTo("country");
         assertThat(header(response, HeaderUtil.MESSAGE)).isEqualTo("The name is already used by another country.");
-        assertThat(response.getHeaders().get("X-ara-duplicatePropertyName")).containsExactly("name");
-        assertThat(response.getHeaders().get("X-ara-otherEntityKey")).containsExactly("cn");
+        assertThat(response.getHeaders().get("X-com.decathlon.ara-duplicatePropertyName")).containsExactly("name");
+        assertThat(response.getHeaders().get("X-com.decathlon.ara-otherEntityKey")).containsExactly("cn");
         assertThatTableHasNotChangedInDataBase();
     }
 
@@ -121,8 +121,8 @@ public class CountryResourceIT {
 
         // THEN
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
-        assertThat(response.getHeaders().get("X-ara-alert")).containsExactly("ara.country.created");
-        assertThat(response.getHeaders().get("X-ara-params")).containsExactly("cd");
+        assertThat(response.getHeaders().get("X-com.decathlon.ara-alert")).containsExactly("com.decathlon.ara.country.created");
+        assertThat(response.getHeaders().get("X-com.decathlon.ara-params")).containsExactly("cd");
         assertThat(response.getBody().getCode()).isEqualTo("cd");
         assertThat(response.getBody().getName()).isEqualTo("some-name");
         final CountryDTO reReadDto = getByCode("cd");
@@ -142,8 +142,8 @@ public class CountryResourceIT {
 
         // THEN
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(response.getHeaders().get("X-ara-alert")).containsExactly("ara.country.updated");
-        assertThat(response.getHeaders().get("X-ara-params")).containsExactly("be");
+        assertThat(response.getHeaders().get("X-com.decathlon.ara-alert")).containsExactly("com.decathlon.ara.country.updated");
+        assertThat(response.getHeaders().get("X-com.decathlon.ara-params")).containsExactly("be");
         assertThat(response.getBody().getCode()).isEqualTo("be");
         assertThat(response.getBody().getName()).isEqualTo("some-name");
         final CountryDTO reReadDto = getByCode("be");
@@ -166,8 +166,8 @@ public class CountryResourceIT {
         assertThat(header(response, HeaderUtil.ERROR)).isEqualTo("error.not_unique");
         assertThat(header(response, HeaderUtil.PARAMS)).isEqualTo("country");
         assertThat(header(response, HeaderUtil.MESSAGE)).isEqualTo("The name is already used by another country.");
-        assertThat(response.getHeaders().get("X-ara-duplicatePropertyName")).containsExactly("name");
-        assertThat(response.getHeaders().get("X-ara-otherEntityKey")).containsExactly("cn");
+        assertThat(response.getHeaders().get("X-com.decathlon.ara-duplicatePropertyName")).containsExactly("name");
+        assertThat(response.getHeaders().get("X-com.decathlon.ara-otherEntityKey")).containsExactly("cn");
     }
 
     @Test
@@ -177,8 +177,8 @@ public class CountryResourceIT {
 
         // THEN
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(response.getHeaders().get("X-ara-alert")).containsExactly("ara.country.deleted");
-        assertThat(response.getHeaders().get("X-ara-params")).containsExactly("cn");
+        assertThat(response.getHeaders().get("X-com.decathlon.ara-alert")).containsExactly("com.decathlon.ara.country.deleted");
+        assertThat(response.getHeaders().get("X-com.decathlon.ara-params")).containsExactly("cn");
         final CountryDTO reReadDto = getByCode("cn");
         assertThat(reReadDto.getCode()).isEqualTo("not-found");
     }

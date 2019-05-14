@@ -36,7 +36,7 @@ import org.springframework.test.context.transaction.TransactionalTestExecutionLi
         MockitoTestExecutionListener.class })
 @DirtiesContext
 @Transactional
-@TestPropertySource(properties = "ara.scheduling.enable=false")
+@TestPropertySource(properties = "com.decathlon.ara.scheduling.enable=false")
 public @interface TransactionalSpringIntegrationTest {
 
 }

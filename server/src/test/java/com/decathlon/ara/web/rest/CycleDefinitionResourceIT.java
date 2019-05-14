@@ -112,7 +112,7 @@ public class CycleDefinitionResourceIT {
 
         // THEN
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(header(response, HeaderUtil.ALERT)).isEqualTo("ara.cycle-definition.updated");
+        assertThat(header(response, HeaderUtil.ALERT)).isEqualTo("com.decathlon.ara.cycle-definition.updated");
         assertThat(header(response, HeaderUtil.PARAMS)).isEqualTo("200");
         assertThat(cut.getAll(PROJECT_CODE).getBody()).containsExactly(// Ordered by branchPosition, branch and name
                 new CycleDefinitionDTO(200L, "updated", "updatedToo", 0),
@@ -178,7 +178,7 @@ public class CycleDefinitionResourceIT {
 
         // THEN
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(header(response, HeaderUtil.ALERT)).isEqualTo("ara.cycle-definition.deleted");
+        assertThat(header(response, HeaderUtil.ALERT)).isEqualTo("com.decathlon.ara.cycle-definition.deleted");
         assertThat(header(response, HeaderUtil.PARAMS)).isEqualTo("201");
 
         // Make sure it has been deleted correctly

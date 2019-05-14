@@ -98,7 +98,7 @@ public class DemoSettingsLoader {
                         "   style=\"font-size: 32px; float: left; margin-right: 4px\"></i>\n" +
                         "FEELING LOST?<br>" +
                         "Read " +
-                        link("https://github.com/Decathlon/ara/blob/master/doc/demo/DemoWalkthrough.adoc",
+                        link("https://github.com/Decathlon/com.decathlon.ara/blob/master/doc/demo/DemoWalkthrough.adoc",
                                 "how to play with the demo project") +
                         " while learning how to use ARA and how it can help your team." +
                         "</div>"));
@@ -145,7 +145,7 @@ public class DemoSettingsLoader {
     }
 
     public void createSources(long projectId) throws NotUniqueException {
-        final String araRepositoryUrl = "https://github.com/decathlon/ara";
+        final String araRepositoryUrl = "https://github.com/decathlon/com.decathlon.ara";
         sourceService.create(projectId, new SourceDTO(
                 SOURCE_CODE_API,
                 "API",
@@ -161,7 +161,7 @@ public class DemoSettingsLoader {
                 "W",
                 Technology.CUCUMBER,
                 araRepositoryUrl +
-                        "/tree/{{branch}}/generated-cucumber-report/src/main/resources/ara/demo/features/",
+                        "/tree/{{branch}}/generated-cucumber-report/src/main/resources/com.decathlon.ara/demo/features/",
                 BRANCH_MASTER,
                 false));
     }

@@ -415,7 +415,7 @@ public class ExecutionServiceTest {
     @Test
     public void unzipExecutions_should_call_unzip_and_return_result() throws IOException {
         // GIVEN
-        File target = new File(System.getProperty("java.io.tmpdir"),"ara-unzipExecutions-" +
+        File target = new File(System.getProperty("java.io.tmpdir"),"com.decathlon.ara-unzipExecutions-" +
                 new Date().getTime());
         target.mkdir(); // Will log in warning level due to the fact that cut will try to recreate it.
         new File(target, "tmp").createNewFile(); // To make the directory not empty.
@@ -439,7 +439,7 @@ public class ExecutionServiceTest {
     @Test(expected = IOException.class)
     public void unzipExecutions_should_propagate_ioexception_from_archiveservice() throws IOException {
         // GIVEN
-        File target = new File(System.getProperty("java.io.tmpdir"),"ara-unzipExecutions-" +
+        File target = new File(System.getProperty("java.io.tmpdir"),"com.decathlon.ara-unzipExecutions-" +
                 new Date().getTime());
         MultipartFile file = new MockMultipartFile("zip", "test.zip", "application/zip", new byte[0]);
         Mockito.doThrow(new IOException("Unable to write")).when(archiveService).unzip(file, target);
@@ -455,7 +455,7 @@ public class ExecutionServiceTest {
     @Test
     public void retrieveAllExecutionDirectories_should_return_the_current_directory() {
         // GIVEN
-        File directory = new File(System.getProperty("java.io.tmpdir"), "ara-retrieveAllExeDir-" +
+        File directory = new File(System.getProperty("java.io.tmpdir"), "com.decathlon.ara-retrieveAllExeDir-" +
                 new Date().getTime());
         directory.mkdir();
         Mockito.doReturn(true).when(this.cut).isExecutionDirectory(directory);
@@ -472,7 +472,7 @@ public class ExecutionServiceTest {
     @Test
     public void retrieveAllExecutionDirectories_should_return_sub_directories() {
         // GIVEN
-        File directory = new File(System.getProperty("java.io.tmpdir"), "ara-retrieveAllExeDirSubDir-" +
+        File directory = new File(System.getProperty("java.io.tmpdir"), "com.decathlon.ara-retrieveAllExeDirSubDir-" +
                 new Date().getTime());
         directory.mkdir();
         Mockito.doReturn(false).when(this.cut).isExecutionDirectory(directory);
@@ -496,7 +496,7 @@ public class ExecutionServiceTest {
     @Test
     public void retrieveAllExecutionDirectories_should_return_empty_if_not_an_execution_directory() {
         // GIVEN
-        File directory = new File(System.getProperty("java.io.tmpdir"), "ara-retrieveAllExeDir-" +
+        File directory = new File(System.getProperty("java.io.tmpdir"), "com.decathlon.ara-retrieveAllExeDir-" +
                 new Date().getTime());
         directory.mkdir();
         Mockito.doReturn(false).when(this.cut).isExecutionDirectory(directory);

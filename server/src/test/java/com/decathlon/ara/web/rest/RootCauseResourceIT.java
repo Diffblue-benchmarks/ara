@@ -104,7 +104,7 @@ public class RootCauseResourceIT {
 
         // THEN
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(header(response, HeaderUtil.ALERT)).isEqualTo("ara.root-cause.updated");
+        assertThat(header(response, HeaderUtil.ALERT)).isEqualTo("com.decathlon.ara.root-cause.updated");
         assertThat(header(response, HeaderUtil.PARAMS)).isEqualTo("1");
         assertThat(cut.getAll(PROJECT_CODE).getBody()).containsExactly( // Ordered by name ASC
                 new RootCauseDTO(Long.valueOf(1), "Renamed"),
@@ -123,7 +123,7 @@ public class RootCauseResourceIT {
 
         // THEN
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(header(response, HeaderUtil.ALERT)).isEqualTo("ara.root-cause.updated");
+        assertThat(header(response, HeaderUtil.ALERT)).isEqualTo("com.decathlon.ara.root-cause.updated");
         assertThat(header(response, HeaderUtil.PARAMS)).isEqualTo("1");
         assertThatTableHasNotChangedInDataBase();
     }
@@ -173,7 +173,7 @@ public class RootCauseResourceIT {
 
         // THEN
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(header(response, HeaderUtil.ALERT)).isEqualTo("ara.root-cause.deleted");
+        assertThat(header(response, HeaderUtil.ALERT)).isEqualTo("com.decathlon.ara.root-cause.deleted");
         assertThat(header(response, HeaderUtil.PARAMS)).isEqualTo("1");
         assertThat(cut.getAll(PROJECT_CODE).getBody()).containsExactly( // Ordered by name ASC
                 new RootCauseDTO(Long.valueOf(3), "Root Cause B"),

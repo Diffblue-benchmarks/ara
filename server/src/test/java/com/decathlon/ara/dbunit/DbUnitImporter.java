@@ -23,7 +23,7 @@ import com.decathlon.ara.util.TransactionalSpringIntegrationTest;
 @SpringBootTest
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, DbUnitTestExecutionListener.class })
 @DatabaseSetup("/dbunit/freshly-created-dataset-to-rename.xml")
-@TestPropertySource(properties = "ara.scheduling.enable=false")
+@TestPropertySource(properties = "com.decathlon.ara.scheduling.enable=false")
 public class DbUnitImporter {
 
     // WARNING: you may need to put &sessionVariables=FOREIGN_KEY_CHECKS=0 at the end of spring.datasource.url in

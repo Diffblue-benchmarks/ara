@@ -56,7 +56,7 @@ public class FeatureActivator {
         this.defaultStates.clear();
         int enabledCounter = 0;
         List<IFeature> allFeatures = collection.list();
-        String featurePrefix = "ara.features.";
+        String featurePrefix = "com.decathlon.ara.features.";
         for (IFeature feature : allFeatures) {
             String propertyActivation = featurePrefix + feature.getCode();
             boolean status = false; // Default : disabled.

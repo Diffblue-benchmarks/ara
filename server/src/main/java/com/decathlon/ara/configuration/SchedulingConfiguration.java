@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @Configuration
-@ConditionalOnProperty(value = "ara.scheduling.enable", havingValue = "true", matchIfMissing = true)
+@ConditionalOnProperty(value = "com.decathlon.ara.scheduling.enable", havingValue = "true", matchIfMissing = true)
 @EnableScheduling
 public class SchedulingConfiguration {
 

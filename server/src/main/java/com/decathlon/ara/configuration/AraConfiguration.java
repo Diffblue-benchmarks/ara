@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
  * for IDEs to auto-complete and document the application*.properties configuration files
  * </p>
  * <p>
- * Important: if you define a new configuration key but only use it in @Value("${ara.foo-bar}")
+ * Important: if you define a new configuration key but only use it in @Value("${com.decathlon.ara.foo-bar}")
  * then you need to document the new keys in src/main/resources/META-INF/additional-spring-configuration-metadata.json
  * Spring will embed it in the generated spring-configuration-metadata.json for IDE auto-completion.
  * </p>

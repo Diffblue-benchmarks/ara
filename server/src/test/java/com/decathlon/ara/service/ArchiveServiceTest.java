@@ -28,7 +28,7 @@ public class ArchiveServiceTest {
     public void unzip_ShouldUnzipTheGivenZip() throws IOException, URISyntaxException {
         // GIVEN
         File targetDir = new File(System.getProperty("java.io.tmpdir"),
-                "ara-unzip_ShouldUnzipTheGivenZip_" + String.valueOf(new Date().getTime()));
+                "com.decathlon.ara-unzip_ShouldUnzipTheGivenZip_" + String.valueOf(new Date().getTime()));
         File folderTargetDir = new File(targetDir, "folder");
         File subfolderTargetDir = new File(folderTargetDir, "sub-folder");
         String zipName = "files-in-folders.zip";
@@ -52,7 +52,7 @@ public class ArchiveServiceTest {
     @Test
     public void unzip_ShouldNotSendIOException_IfZipFileEmpty() throws IOException {
         File targetDir = new File(System.getProperty("java.io.tmpdir"),
-                "ara-unzip_ShouldSendIOException_IfZipFileEmpty-" + String.valueOf(new Date().getTime()));
+                "com.decathlon.ara-unzip_ShouldSendIOException_IfZipFileEmpty-" + String.valueOf(new Date().getTime()));
         MultipartFile zipFile = new MockMultipartFile("zip", "not-exisiting.zip", ZIP_TYPE, new byte[0]);
 
         // WHEN
@@ -66,7 +66,7 @@ public class ArchiveServiceTest {
     @Test
     public void unzip_should_unzip_even_on_empty_file() throws IOException {
         File targetDir = new File(System.getProperty("java.io.tmpdir"),
-                "ara-unzip-empty-file-" + new Date().getTime());
+                "com.decathlon.ara-unzip-empty-file-" + new Date().getTime());
         targetDir.mkdir();
         MockMultipartFile zip = new MockMultipartFile("zip", "empty-zip.zip", ZIP_TYPE, new byte[0]);
         try {

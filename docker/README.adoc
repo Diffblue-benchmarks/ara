@@ -63,7 +63,7 @@ just use the target `run` without any `COMMIT_REF`:
 it will build the Docker images before running them.
 
 The JAR from your workspace will be used to build the Docker images. +
-The ara-server image will take the server/target/ara-*.jar file (which itself includes the ara-client JAR).
+The com.decathlon.ara-server image will take the server/target/com.decathlon.ara-*.jar file (which itself includes the com.decathlon.ara-client JAR).
 
 To build or rebuild the JAR file, just use this command:
 
@@ -81,9 +81,9 @@ make package-server SKIP_TESTS=true
 
 Here are the three components of ARA:
 
-* The ara-server Docker image: it runs the server (both back and front parts) on port 8080,
-* The ara-db Docker image: it runs the MarioDB/MySQL server on port 3306,
-* The ara docker-compose script: it runs both the database and the Web server.
+* The com.decathlon.ara-server Docker image: it runs the server (both back and front parts) on port 8080,
+* The com.decathlon.ara-db Docker image: it runs the MarioDB/MySQL server on port 3306,
+* The com.decathlon.ara docker-compose script: it runs both the database and the Web server.
 
 All Docker images' run-scripts and docker-compose script persist state to the `data` folder.
 
@@ -93,17 +93,17 @@ If you are developing ARA, you may need to adjust the ARA Docker images and rebu
 
 Here are all the available `make` targets:
 
-* `build`:          Build ara-db & ara-server images
-* `build-db`:       Build ara-db image
-* `build-server`:   Build ara-server image
-* `package-server`: Build the ARA JAR to be integrated into the ara-server Docker image (quite long, so it needs to be called manually, and you can speed it up with SKIP_TESTS=true)
-* `push`:           Build ara-db & ara-server images and push them to Docker registry
-* `push-db`:        Build and push ara-db image to Docker registry
-* `push-server`:    Build and push ara-server image to Docker registry
-* `run`:            Build and run ara-db & ara-server images with docker-compose
-* `run-db`:         Build and run ara-db image
-* `run-server`:     Build and run ara-server image
-* `run-version`:    Run pre-existing ara-db & ara-server images with docker-compose (use COMMIT_REF=... to select the version to run)
+* `build`:          Build com.decathlon.ara-db & com.decathlon.ara-server images
+* `build-db`:       Build com.decathlon.ara-db image
+* `build-server`:   Build com.decathlon.ara-server image
+* `package-server`: Build the ARA JAR to be integrated into the com.decathlon.ara-server Docker image (quite long, so it needs to be called manually, and you can speed it up with SKIP_TESTS=true)
+* `push`:           Build com.decathlon.ara-db & com.decathlon.ara-server images and push them to Docker registry
+* `push-db`:        Build and push com.decathlon.ara-db image to Docker registry
+* `push-server`:    Build and push com.decathlon.ara-server image to Docker registry
+* `run`:            Build and run com.decathlon.ara-db & com.decathlon.ara-server images with docker-compose
+* `run-db`:         Build and run com.decathlon.ara-db image
+* `run-server`:     Build and run com.decathlon.ara-server image
+* `run-version`:    Run pre-existing com.decathlon.ara-db & com.decathlon.ara-server images with docker-compose (use COMMIT_REF=... to select the version to run)
 
 Except `run-version` (which is a user-centric target), all other targets rebuild the image(s) before running it/them.
 

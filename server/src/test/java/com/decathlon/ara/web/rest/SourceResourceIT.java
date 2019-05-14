@@ -117,8 +117,8 @@ public class SourceResourceIT {
 
         // THEN
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
-        assertThat(response.getHeaders().get("X-ara-alert")).containsExactly("ara.source.created");
-        assertThat(response.getHeaders().get("X-ara-params")).containsExactly("code10");
+        assertThat(response.getHeaders().get("X-com.decathlon.ara-alert")).containsExactly("com.decathlon.ara.source.created");
+        assertThat(response.getHeaders().get("X-com.decathlon.ara-params")).containsExactly("code10");
         assertThat(response.getBody().getCode()).isEqualTo("code10");
         assertThat(response.getBody().getLetter()).isEqualTo("X");
         assertThat(cut.getAll(PROJECT_CODE).getBody()).containsExactly( // Ordered by name ASC
@@ -132,7 +132,7 @@ public class SourceResourceIT {
     public void createOrUpdate_ShouldUpdate_WhenSourceExists() {
         ResponseEntity<SourceDTO> response = cut.createOrUpdate(PROJECT_CODE, "code3", new SourceDTO(null, "Rename C", "D", Technology.CUCUMBER, "updatedUrl", "master", true));
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(header(response, HeaderUtil.ALERT)).isEqualTo("ara.source.updated");
+        assertThat(header(response, HeaderUtil.ALERT)).isEqualTo("com.decathlon.ara.source.updated");
         assertThat(header(response, HeaderUtil.PARAMS)).isEqualTo("code3");
 
         assertThat(cut.getAll(PROJECT_CODE).getBody()).containsExactly( // Ordered by name ASC
@@ -174,8 +174,8 @@ public class SourceResourceIT {
 
         // THEN
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(header(response, HeaderUtil.ALERT)).isEqualTo("ara.source.deleted");
-        assertThat(response.getHeaders().get("X-ara-params")).containsExactly("code1");
+        assertThat(header(response, HeaderUtil.ALERT)).isEqualTo("com.decathlon.ara.source.deleted");
+        assertThat(response.getHeaders().get("X-com.decathlon.ara-params")).containsExactly("code1");
         assertThat(cut.getAll(PROJECT_CODE).getBody()).containsExactly( // Ordered by name ASC
                 new SourceDTO("code2", "Source B", "B", Technology.CUCUMBER, "vcsUrl2", "develop", true),
                 new SourceDTO("code3", "Source C", "C", Technology.CUCUMBER, "vcsUrl3", "develop", true));

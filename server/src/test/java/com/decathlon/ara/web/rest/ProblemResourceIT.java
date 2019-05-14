@@ -506,7 +506,7 @@ public class ProblemResourceIT {
     public void testDeleteOk() {
         ResponseEntity<Void> response = cut.delete(PROJECT_CODE, 1001);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(header(response, HeaderUtil.ALERT)).isEqualTo("ara.problem.deleted");
+        assertThat(header(response, HeaderUtil.ALERT)).isEqualTo("com.decathlon.ara.problem.deleted");
         assertThat(header(response, HeaderUtil.PARAMS)).isEqualTo("1001");
 
         ResponseEntity<ProblemWithPatternsAndAggregateTDO> checkResponse = cut.getOne(PROJECT_CODE, 1);

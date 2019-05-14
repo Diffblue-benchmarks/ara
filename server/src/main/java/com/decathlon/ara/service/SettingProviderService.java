@@ -114,7 +114,7 @@ public class SettingProviderService {
                         Fetcher.BRANCH_VARIABLE + " is the name of the branch for the given execution, " +
                         Fetcher.CYCLE_VARIABLE + " is the name of the given execution. " +
                         EG_QUOTE + defaultExecutionBasePath + " (on Linux) " +
-                        "or \"C:/ara/data/executions/" + Fetcher.DEFAULT_EXECUTION_VARIABLES + "\" (on Windows) " +
+                        "or \"C:/com.decathlon.ara/data/executions/" + Fetcher.DEFAULT_EXECUTION_VARIABLES + "\" (on Windows) " +
                         "or \"classpath:/executions/" + Fetcher.DEFAULT_EXECUTION_VARIABLES + "\" (for tests)"));
 
         final String defaultCycleDefinitionPath = "/cycleDefinition.json";
@@ -199,7 +199,7 @@ public class SettingProviderService {
     }
 
     private String computeDefaultExecutionsFolder() {
-        final String defaultDirectory = "/opt/ara/data/executions/"; // Is C:\opt\... on Windows
+        final String defaultDirectory = "/opt/com.decathlon.ara/data/executions/"; // Is C:\opt\... on Windows
         try {
             // Can create the directory...
             Files.createDirectories(Paths.get(defaultDirectory));
@@ -214,7 +214,7 @@ public class SettingProviderService {
             // Then OK!
             return defaultDirectory;
         } catch (IOException e) {
-            final String userDirectory = Paths.get(System.getProperty("user.home"), "ara-data", "executions")
+            final String userDirectory = Paths.get(System.getProperty("user.home"), "com.decathlon.ara-data", "executions")
                     .toAbsolutePath().toString() + File.separator;
             log.warn("Cannot create or write to the default executions directory: " +
                             "using {} as the default folder to store executions instead of {}",

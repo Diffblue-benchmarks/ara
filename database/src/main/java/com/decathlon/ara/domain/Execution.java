@@ -3,7 +3,7 @@ package com.decathlon.ara.domain;
 import com.decathlon.ara.domain.enumeration.ExecutionAcceptance;
 import com.decathlon.ara.domain.enumeration.JobStatus;
 import com.decathlon.ara.domain.enumeration.QualityStatus;
-import com.decathlon.ara.ci.bean.Result;
+import com.decathlon.ara.domain.enumeration.Result;
 import java.util.Date;
 import java.util.Set;
 import java.util.TreeSet;

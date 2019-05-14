@@ -171,7 +171,7 @@ public class ProjectResourceIT {
 
         // THEN
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(header(response, HeaderUtil.ALERT)).isEqualTo("ara.project.updated");
+        assertThat(header(response, HeaderUtil.ALERT)).isEqualTo("com.decathlon.ara.project.updated");
         assertThat(header(response, HeaderUtil.PARAMS)).isEqualTo("1");
         assertThat(cut.getAll()).containsExactly( // Ordered by name ASC
                 new ProjectDTO(Long.valueOf(3), "project-z", "Project B", false),
@@ -190,7 +190,7 @@ public class ProjectResourceIT {
 
         // THEN
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(header(response, HeaderUtil.ALERT)).isEqualTo("ara.project.updated");
+        assertThat(header(response, HeaderUtil.ALERT)).isEqualTo("com.decathlon.ara.project.updated");
         assertThat(header(response, HeaderUtil.PARAMS)).isEqualTo("1");
         assertThatTableHasNotChangedInDataBase();
     }

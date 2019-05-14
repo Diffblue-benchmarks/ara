@@ -66,7 +66,7 @@ public class ProblemPatternResourceIT {
 
         // THEN
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(header(response, HeaderUtil.ALERT)).isEqualTo("ara.problem-pattern.deleted");
+        assertThat(header(response, HeaderUtil.ALERT)).isEqualTo("com.decathlon.ara.problem-pattern.deleted");
         assertThat(header(response, HeaderUtil.PARAMS)).isEqualTo(String.valueOf(patternIdToDelete));
         assertThat(response.getBody().getDeletedProblem().getId()).isEqualTo(problemIdOfPatternToDelete);
         assertThat(response.getBody().getDeletedProblem().getName()).isEqualTo("Step 2 needs rework");
@@ -88,7 +88,7 @@ public class ProblemPatternResourceIT {
 
         // THEN
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(header(response, HeaderUtil.ALERT)).isEqualTo("ara.problem-pattern.deleted");
+        assertThat(header(response, HeaderUtil.ALERT)).isEqualTo("com.decathlon.ara.problem-pattern.deleted");
         assertThat(header(response, HeaderUtil.PARAMS)).isEqualTo(String.valueOf(patternIdToDelete));
         assertThat(response.getBody().getDeletedProblem()).isNull();
         assertThat(catchThrowable(() -> problemPatternService.findOne(PROJECT_ID, patternIdToDelete))).isInstanceOf(NotFoundException.class);

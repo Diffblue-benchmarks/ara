@@ -443,7 +443,7 @@ If you updated the work-item a few seconds ago, you may want to speed up the ARA
             }
           }, (error) => {
             this.loadingProblem = false
-            let araError = error.headers.map['x-ara-error']
+            let araError = error.headers.map['x-com.decathlon.ara-error']
             if (araError && araError.length && araError[0] === 'error.no_defect_tracking_system') {
               let self = this
               this.$Modal.info({

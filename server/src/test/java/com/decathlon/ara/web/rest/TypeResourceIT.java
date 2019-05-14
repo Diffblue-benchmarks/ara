@@ -102,7 +102,7 @@ public class TypeResourceIT {
 
         // THEN
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(header(response, HeaderUtil.ALERT)).isEqualTo("ara.type.updated");
+        assertThat(header(response, HeaderUtil.ALERT)).isEqualTo("com.decathlon.ara.type.updated");
         assertThat(header(response, HeaderUtil.PARAMS)).isEqualTo("TYPE-03");
         assertThat(cut.getAll(PROJECT_CODE).getBody()).containsExactly( // Ordered by name ASC
                 new TypeWithSourceCodeDTO("TYPE-01", "TEST", true, false, "code1"),
@@ -122,7 +122,7 @@ public class TypeResourceIT {
 
         // THEN
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(header(response, HeaderUtil.ALERT)).isEqualTo("ara.type.updated");
+        assertThat(header(response, HeaderUtil.ALERT)).isEqualTo("com.decathlon.ara.type.updated");
         assertThat(header(response, HeaderUtil.PARAMS)).isEqualTo("TYPE-02");
         assertThatTableHasNotChangedInDataBase();
     }
@@ -151,7 +151,7 @@ public class TypeResourceIT {
 
         // THEN
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(header(response, HeaderUtil.ALERT)).isEqualTo("ara.type.deleted");
+        assertThat(header(response, HeaderUtil.ALERT)).isEqualTo("com.decathlon.ara.type.deleted");
         assertThat(header(response, HeaderUtil.PARAMS)).isEqualTo("TYPE-04");
         assertThat(cut.getAll(PROJECT_CODE).getBody()).containsExactly( // Ordered by name ASC
                 new TypeWithSourceCodeDTO("TYPE-01", "TEST", true, false, "code1"),

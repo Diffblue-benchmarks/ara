@@ -97,7 +97,7 @@ You need a production machine onto which to install the ARA server (the server a
 
 === Add Configuration Files
 
-* Create a new folder `ara/server/src/main/resources/config/{app}`, where {app} is the id of your application
+* Create a new folder `com.decathlon.ara/server/src/main/resources/config/{app}`, where {app} is the id of your application
 * In this folder, create:
 ** application.properties for global configuration
 ** application-dev.properties for local development database/schema URL
@@ -107,7 +107,7 @@ Check other application properties files to know what configuration options to (
 
 === Plug it in Maven
 
-In ara/server/pom.xml, in the <profiles/> section:
+In com.decathlon.ara/server/pom.xml, in the <profiles/> section:
 
 * Duplicate the "dev" <profile/>
 * Rename it "dev-{app}", where {app} is the id of your application
@@ -115,20 +115,20 @@ In ara/server/pom.xml, in the <profiles/> section:
 
 === Create the Production Launch Script
 
-* Duplicate `ara/server/scripts/ara-service-{an-app}.sh` and rename {an-app} it with your application id ({app} used
+* Duplicate `com.decathlon.ara/server/scripts/com.decathlon.ara-service-{an-app}.sh` and rename {an-app} it with your application id ({app} used
   elsewhere in this documentation)
 * Edit it, change the app variable with your application id, and the sensitive passwords (we advise you to retrieve them
   from secret files on the target production machine)
 
 === Make Jenkins Deploy the Application
 
-In ara/Jenkinsfile, duplicate one "Deployment: " stage and make it point to your server and application id.
+In com.decathlon.ara/Jenkinsfile, duplicate one "Deployment: " stage and make it point to your server and application id.
 
 === Insert Configuration Data
 
 Once you installed a machine, create the schema:
 
-    CREATE DATABASE `ara-prod`;
+    CREATE DATABASE `com.decathlon.ara-prod`;
 
 See next chapter for more details (the next chapter is for a local development machine, but can be adapted for a
 production machine).
@@ -174,26 +174,26 @@ https://dev.mysql.com/downloads/workbench/
 
 Connect via MySql Workbench, and execute:
 
-    CREATE DATABASE `ara-dev-in`;
+    CREATE DATABASE `com.decathlon.ara-dev-in`;
 
 This will be the schema used by integration tests on your local development environment.
 
 Then, for each application you will maintain, create a schema for running the application on your local development machine:
 
-    CREATE DATABASE `ara-{app}-dev`;
+    CREATE DATABASE `com.decathlon.ara-{app}-dev`;
 
 Where `{app}` is the id of your application(s).
 
 If you work on ARA Core, you CAN create this schema to test a core ARA (without application-dependant configuration):
 
-    CREATE DATABASE `ara-dev`;
+    CREATE DATABASE `com.decathlon.ara-dev`;
 
 === Initialize the Development Data Base
-To create the tables, run this command in ara-server directory:
+To create the tables, run this command in com.decathlon.ara-server directory:
 
     mvn -Dspring.config.location=classpath:/,classpath:/config/{app}/ liquibase:updateTestingRollback -P{profile}
 
-Where `{app}` is the id of your application and `{profile}` is the profile linked to your app in the `ara-server/pom.xml` file. +
+Where `{app}` is the id of your application and `{profile}` is the profile linked to your app in the `com.decathlon.ara-server/pom.xml` file. +
 Repeat for each application you maintain.
 
 Then, to populate some data, you can initiate the Demo project :
@@ -262,14 +262,14 @@ Alternatively, make sure this option is here:
 
 IntelliJ -> File -> Settings -> Build, Execution, Deployment -> Compiler -> Java Compiler +
 Override compiler parameters per-module: +
-Module "ara-server" Compilation options "-Amapstruct.defaultComponentModel=spring -Amapstruct.unmappedTargetPolicy=IGNORE"
+Module "com.decathlon.ara-server" Compilation options "-Amapstruct.defaultComponentModel=spring -Amapstruct.unmappedTargetPolicy=IGNORE"
 
 With these options, the IntelliJ compiler will generate MapStruct class implementations with the Spring @Component annotation.
 
 ==== First Compilation
 
 First do a "mvn install -Pdev_in" in the root of the ARA project. +
-This will generate the client and ara-generated-cucumber-report dependencies for the server module to compile. +
+This will generate the client and com.decathlon.ara-generated-cucumber-report dependencies for the server module to compile. +
 This will also generate the Q* and S* classes (the QueryDsl classes) to make your IDE happy.
 
 ==== Run the Server
@@ -278,12 +278,12 @@ First, in a terminal, go to the client module and run "npm run dev" to have a li
 
 Then, on the server part, create a Spring Boot run configuration:
 
-* Main class: com.decathlon.ara.AraApplication
+* Main class: com.decathlon.com.decathlon.ara.AraApplication
 * Active Profiles: dev (if you don't have the Intellij Ultimate version, use the VM arg : `-Dspring.profiles.active=dev` )
 * VM options: `-Dspring.config.location=classpath:/,classpath:/config/{app}/` where you replace `{app}` by the application you want to launch (see below)
 * VM options: `-DdocUrl=<location of your docs if you host them on a different server or http://localhost>`
 * Spring Boot Settings: Override parameters:
-** key: ara.sshPassword / value: ((you know it, it is a secret))
+** key: com.decathlon.ara.sshPassword / value: ((you know it, it is a secret))
 
 Here are some details about the application-specific configuration folder of the above `classpath:/config/{app}/`. +
 For a new application, create a `server/src/main/resources/config/{app}` folder, and add:
@@ -301,11 +301,11 @@ For a new application, create a `server/src/main/resources/config/{app}` folder,
 ** `spring.datasource.url`: the database URL
 ** `spring.datasource.username`: the database login
 ** `spring.datasource.password`: the database password
-** `ara.clientBaseUrl`: the URL on which your ARA is deployed, as seen by your users
+** `com.decathlon.ara.clientBaseUrl`: the URL on which your ARA is deployed, as seen by your users
    (used to generate links in sent report emails)
-** `ara.executionSchedulingEnabled=true` to enable execution indexing (1/3)
-** `ara.executionSchedulingDelayInMilliseconds=60000` to enable execution indexing (2/3)
-** `ara.executionSchedulingInitialDelayInMilliseconds=10000` to enable execution indexing (3/3)
+** `com.decathlon.ara.executionSchedulingEnabled=true` to enable execution indexing (1/3)
+** `com.decathlon.ara.executionSchedulingDelayInMilliseconds=60000` to enable execution indexing (2/3)
+** `com.decathlon.ara.executionSchedulingInitialDelayInMilliseconds=10000` to enable execution indexing (3/3)
 
 You can run it to get a working server part, talking to the client you launched above.
 
@@ -314,9 +314,9 @@ In order to index latest non-regression-tests you need to:
 
 * Duplicate the run configuration, and name it "AraApplication with indexing", for instance
 * Add these program arguments:
-** --ara.executionSchedulingEnabled=true
-** --ara.executionSchedulingDelayInMilliseconds=60000
-** --ara.executionSchedulingInitialDelayInMilliseconds=0
+** --com.decathlon.ara.executionSchedulingEnabled=true
+** --com.decathlon.ara.executionSchedulingDelayInMilliseconds=60000
+** --com.decathlon.ara.executionSchedulingInitialDelayInMilliseconds=0
 
 Stop the currently running server. +
 Launch this new server run configuration and wait until latest executions get indexed automatically. +
@@ -332,7 +332,7 @@ This is why we advise you to run this command only when needing to test the inde
 * ``mvn install -Pdev_in -DskipITs=true`` to compile, package and install the application, keeping unit tests, but bypassing slow integration tests
 * ``mvn install -Pdev_in -DskipTests=true -DskipITs=true`` to compile, package and install the application, bypassing all tests, or to regenerate the mapping classes or the entity and table classes if database schema changed
 * ``mvn install -Pdev_in -Dmaven.test.skip=true`` to compile, package and install the application, without even compiling test classes
-* ``java -Dspring.profiles.active=dev -jar target/ara-server-*.jar`` to run the produced application, including the client in the server
+* ``java -Dspring.profiles.active=dev -jar target/com.decathlon.ara-server-*.jar`` to run the produced application, including the client in the server
 * ``mvn install -Pdev_in -DskipPitest`` to skip Pitest tests (mutates the code and check at least one test is failing, to make sure no equivalent to assert(true) is done in tests)
 
 == Liquibase
@@ -363,7 +363,7 @@ Wherever possible, copy another class and adapt it, to get all useful Lombok ann
   One changeLog XML file can be split in several changeSets as needed
   (eg. one to add a column, another to migrate data, and a last one to remove the old column...)
 * Declare the new changeLog in src/main/resources/liquibase/master.xml
-* Add a new entity in src/main/java com.decathlon.ara.domain
+* Add a new entity in src/main/java com.decathlon.com.decathlon.ara.domain
 * Be careful to include a business-key in @EqualsAndHashCode and keep this business key in sync with compareTo():
   see https://developer.jboss.org/wiki/EqualsAndHashCode (so we can put the entities in sets) +
   The primary key can be hidden to users (eg. if it's a uniquely-generated Long ID),
@@ -372,14 +372,14 @@ Wherever possible, copy another class and adapt it, to get all useful Lombok ann
   entity creation). The business key is also used by Hibernate to identify entities in a set (via compareTo/equals).
   The business key also needs a unique constraint to enforce it.
 * Don't forget to create unique constraints, foreign keys and indices where needed.
-* Add a new data transfer object in src/main/java com.decathlon.ara.service.dto
-* Add a new entity<=>DTO mapper in src/main/java com.decathlon.ara.service.mapper
-* Add a new repository in src/main/java com.decathlon.ara.repository
-* Add a new service in src/main/java com.decathlon.ara.service
-* Add a new REST resource in src/main/java com.decathlon.ara.service.web.rest
+* Add a new data transfer object in src/main/java com.decathlon.com.decathlon.ara.service.dto
+* Add a new entity<=>DTO mapper in src/main/java com.decathlon.com.decathlon.ara.service.mapper
+* Add a new repository in src/main/java com.decathlon.com.decathlon.ara.repository
+* Add a new service in src/main/java com.decathlon.com.decathlon.ara.service
+* Add a new REST resource in src/main/java com.decathlon.com.decathlon.ara.service.web.rest
 * Add all needed *Test classes for unit-tests and/or *IT classes for integration tests
 * Update the file uml.txt to document the new table
-* Add the table in com.decathlon.ara.dbunit.DbUnitExporter for easy data migration and/or integration-test creation
+* Add the table in com.decathlon.com.decathlon.ara.dbunit.DbUnitExporter for easy data migration and/or integration-test creation
 * Add a Level-2 Hibernate cache in src/main/resources/ehcache.xml (caches are declared in alphabetical order)
 * If it is a new configuration table, in the client project, add a new management-*.vue,
   using the crud.vue component to generate the table and create/edit window with little efforts
@@ -417,14 +417,14 @@ First we need to create a class which will holds our flipping informations. This
 `IFeature`. Once you do it, register your new flipping class in the constructor of `FeatureCollection` class.
 
 You can then add a default state for the feature (enabled or not), in the spring `application.properties` :
-`ara.features.<code>=<state>` where `<code>` is the value returned by
+`com.decathlon.ara.features.<code>=<state>` where `<code>` is the value returned by
 your feature `getCode()` method and `<state>` set to `true` if enabled or `false` if disabled.
 
 Note that the resolution of a feature default state (state at the application init) is calculated following
 those rules :
 
 * the value is setted in system property `-Dara.features.<code>=<state>`
-* if not, the value is setted in the spring application.properties file `ara.features.<code>=<state>`
+* if not, the value is setted in the spring application.properties file `com.decathlon.ara.features.<code>=<state>`
 * if not, the value is `false`.
 
 Once your ARA instance is live, you can update the current state of a feature flipping using the
@@ -474,8 +474,8 @@ Note that Pitest needs the tests to have run for it to compute code coverage and
 
     mvn test -DskipPitest -Pdev_in && \
     mvn pitest:mutationCoverage \
-        -DtargetClasses=com.decathlon.ara.postman.service.PostmanService \
-        -DtargetTests=com.decathlon.ara.postman.service.PostmanServiceTest \
+        -DtargetClasses=com.decathlon.com.decathlon.ara.postman.service.PostmanService \
+        -DtargetTests=com.decathlon.com.decathlon.ara.postman.service.PostmanServiceTest \
         -Pdev_in
 
 It's only an example: you can specify only one class to test (PostmanService) and one test class (PostmanServiceTest). +
@@ -515,7 +515,7 @@ This can be handy to:
 To export a database, create this run configuration in your IDE:
 
 * Type: JUnit
-* Class: `com.decathlon.ara.dbunit.DbUnitExporter`
+* Class: `com.decathlon.com.decathlon.ara.dbunit.DbUnitExporter`
 * VM options (change the profile to export another schema, and replace {app} with your application id):
 
     -ea
@@ -527,7 +527,7 @@ To export a database, create this run configuration in your IDE:
 To export the production database, create this run configuration in your IDE:
 
 * Type: JUnit
-* Class: `com.decathlon.ara.dbunit.DbUnitExporter`
+* Class: `com.decathlon.com.decathlon.ara.dbunit.DbUnitExporter`
 * VM options (replace {app} TWICE with your application id):
 
     -ea
@@ -542,10 +542,10 @@ To export the production database, create this run configuration in your IDE:
 To import the database locally (here, on your dev schema/profile), create this run configuration in your IDE:
 
 * Type: JUnit
-* Class: `com.decathlon.ara.dbunit.DbUnitImporter`
+* Class: `com.decathlon.com.decathlon.ara.dbunit.DbUnitImporter`
 * VM options (replace {app} TWICE with your application id):
 
     -ea
     -Dspring.profiles.active=dev
     -Dspring.config.location=classpath:/,classpath:/config/{app}
-    -Dspring.datasource.url=jdbc:mysql://localhost:3306/ara-{app}-dev?useUnicode=yes&characterEncoding=UTF-8&sessionVariables=FOREIGN_KEY_CHECKS=0
+    -Dspring.datasource.url=jdbc:mysql://localhost:3306/com.decathlon.ara-{app}-dev?useUnicode=yes&characterEncoding=UTF-8&sessionVariables=FOREIGN_KEY_CHECKS=0

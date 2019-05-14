@@ -104,8 +104,8 @@ public class DefectService {
         return adapters;
     }
 
-    @Scheduled(fixedDelayString = "${ara.defectSyncSchedulingDelayInMilliseconds}",
-            initialDelayString = "${ara.defectSyncSchedulingInitialDelayInMilliseconds}")
+    @Scheduled(fixedDelayString = "${com.decathlon.ara.defectSyncSchedulingDelayInMilliseconds}",
+            initialDelayString = "${com.decathlon.ara.defectSyncSchedulingInitialDelayInMilliseconds}")
     @Transactional
     public void updateStatuses() {
         for (Project project : projectRepository.findAllByOrderByName()) {

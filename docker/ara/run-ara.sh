@@ -4,7 +4,7 @@ if [[ $1 ]]; then
     DB_TAG=$1
     echo "Using database tag '${DB_TAG}' from the first argument"
 else
-    TAG='ara-db'
+    TAG='com.decathlon.ara-db'
     echo "No database tag in first argument: using '${DB_TAG}'"
 fi
 
@@ -12,7 +12,7 @@ if [[ $2 ]]; then
     SERVER_TAG=$2
     echo "Using server tag '${SERVER_TAG}' from the second argument"
 else
-    TAG='ara-server'
+    TAG='com.decathlon.ara-server'
     echo "No server tag in second argument: using '${SERVER_TAG}'"
 fi
 

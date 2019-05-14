@@ -286,7 +286,7 @@ public class ExecutionResourceIT {
         String projectCode = "prj";
         String branchName = "develop";
         String cycleName = "day";
-        File incomingPath = new File("/tmp/ara/executions/custom/" + projectCode
+        File incomingPath = new File("/tmp/com.decathlon.ara/executions/custom/" + projectCode
                 + "/" + branchName + "/" + cycleName + "/incoming/1547216212139");
         Build build = new Build().withLink(incomingPath.getAbsolutePath() + File.separator);
         CycleDefinition cycle = new CycleDefinition(1L, 2, branchName, cycleName, 1);
@@ -301,7 +301,7 @@ public class ExecutionResourceIT {
             if (':' == incomingPath.getAbsolutePath().charAt(1)) { // Windows like path
                 FileUtils.deleteQuietly(new File("/tmp"));
             } else {
-                FileUtils.deleteQuietly(new File("/tmp/ara"));
+                FileUtils.deleteQuietly(new File("/tmp/com.decathlon.ara"));
             }
         }
     }

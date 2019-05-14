@@ -7,8 +7,8 @@ pipeline {
     environment {
         commitReference = ''
         // NOTE : Those credentials need to be added to your jenkins instance's secrets manually before the first build.
-        DB_IT = credentials('credentials-ara-db-it')                // User & Password of the Integration Database
-        INTEGRATION_DB_URL = credentials('ara-integration-db-url')  // URL of the integration database (with jdbc prefix)
+        DB_IT = credentials('credentials-com.decathlon.ara-db-it')                // User & Password of the Integration Database
+        INTEGRATION_DB_URL = credentials('com.decathlon.ara-integration-db-url')  // URL of the integration database (with jdbc prefix)
         DOCKER_REPO = credentials('docker-repo')                    // URL of your Docker repository to upload images
         SONAR_CREDENTIALS = credentials('quality_server')           // User & Password of your Sonar instance for Github
         SONAR_GITHUB_TOKEN = credentials('Jenkins_github_token')    // Github token for the communication with Sonar.
@@ -24,7 +24,7 @@ pipeline {
         stage('Build') {
             steps {
                 buildProject()
-                stash name: 'ara-jar', includes: "final/target/*.jar"
+                stash name: 'com.decathlon.ara-jar', includes: "final/target/*.jar"
             }
         }
         stage('Quality Scan') {
@@ -41,7 +41,7 @@ pipeline {
             }
             steps {
                 sh ('rm -rf final/target/*.jar')
-                unstash 'ara-jar'
+                unstash 'com.decathlon.ara-jar'
                 dir ('docker') {
                     sh "make push DOCKER_REGISTRY=${env.DOCKER_REPO}"
                 }

@@ -42,7 +42,7 @@
             <artifactId>ara-lib</artifactId>
             <version>${project.version}</version>
             <exclusions>
-                <!-- ara-lib is designed to integrate with the project's provided version of Cucumber: -->
+                <!-- com.decathlon.ara-lib is designed to integrate with the project's provided version of Cucumber: -->
                 <!-- we override it with a Cucumber fork having another groupId -->
                 <exclusion>
                     <groupId>info.cukes</groupId>
@@ -65,7 +65,7 @@
     </dependencies>
 
     <build>
-        <finalName>ara-${project.version}</finalName>
+        <finalName>com.decathlon.ara-${project.version}</finalName>
         <plugins>
             <!-- Package executable JAR archive to be able to run the application "in-place" -->
             <plugin>
@@ -79,7 +79,7 @@
                     </dependency>
                 </dependencies>
                 <configuration>
-                    <mainClass>com.decathlon.ara.AraApplication</mainClass>
+                    <mainClass>com.decathlon.com.decathlon.ara.AraApplication</mainClass>
                     <layout>JAR</layout>
                 </configuration>
             </plugin>

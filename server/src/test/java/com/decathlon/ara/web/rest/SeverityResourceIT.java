@@ -170,7 +170,7 @@ public class SeverityResourceIT {
 
         // THEN
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(header(response, HeaderUtil.ALERT)).isEqualTo("ara.severity.updated");
+        assertThat(header(response, HeaderUtil.ALERT)).isEqualTo("com.decathlon.ara.severity.updated");
         assertThat(header(response, HeaderUtil.PARAMS)).isEqualTo(existingSeverityCode);
         assertThat(cut.getAll(PROJECT_CODE).getBody()).containsExactly( // Ordered by name ASC
                 new SeverityDTO("code1", Integer.valueOf(1), "test", "P0", "A", true),
@@ -189,7 +189,7 @@ public class SeverityResourceIT {
 
         // THEN
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(header(response, HeaderUtil.ALERT)).isEqualTo("ara.severity.updated");
+        assertThat(header(response, HeaderUtil.ALERT)).isEqualTo("com.decathlon.ara.severity.updated");
         assertThat(header(response, HeaderUtil.PARAMS)).isEqualTo("code2");
         assertThatTableHasNotChangedInDataBase();
     }
@@ -265,7 +265,7 @@ public class SeverityResourceIT {
 
         // THEN
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(header(response, HeaderUtil.ALERT)).isEqualTo("ara.severity.deleted");
+        assertThat(header(response, HeaderUtil.ALERT)).isEqualTo("com.decathlon.ara.severity.deleted");
         assertThat(header(response, HeaderUtil.PARAMS)).isEqualTo("code3");
         assertThat(cut.getAll(PROJECT_CODE).getBody()).containsExactly( // Ordered by name ASC
                 new SeverityDTO("code1", Integer.valueOf(1), "test", "P0", "A", true),

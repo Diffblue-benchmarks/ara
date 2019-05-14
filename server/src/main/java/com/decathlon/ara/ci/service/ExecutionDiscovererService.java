@@ -57,15 +57,15 @@ public class ExecutionDiscovererService {
     @NonNull
     private final SettingService settingService;
 
-    @Value("${ara.executionSchedulingEnabled}")
+    @Value("${com.decathlon.ara.executionSchedulingEnabled}")
     private boolean executionSchedulingEnabled;
 
     /**
      * Scheduled very regularly to list all cycle executions to index (running or not yet indexed).
      */
     @Transactional(readOnly = true)
-    @Scheduled(fixedDelayString = "${ara.executionSchedulingDelayInMilliseconds}",
-            initialDelayString = "${ara.executionSchedulingInitialDelayInMilliseconds}")
+    @Scheduled(fixedDelayString = "${com.decathlon.ara.executionSchedulingDelayInMilliseconds}",
+            initialDelayString = "${com.decathlon.ara.executionSchedulingInitialDelayInMilliseconds}")
     public void run() {
         if (executionSchedulingEnabled) {
             List<BuildToIndex> buildsToIndex = new ArrayList<>();

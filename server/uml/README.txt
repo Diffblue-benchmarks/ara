@@ -31,7 +31,7 @@ Installing ri documentation for asciidoctor-diagram-1.5.4
 Done installing documentation for asciidoctor, asciidoctor-diagram after 3 seconds
 2 gems installed
 
-cd ~/git/ara/server/uml
+cd ~/git/com.decathlon.ara/server/uml
 export GRAPHVIZ_DOT=/C/Program\ Files\ \(x86\)/Graphviz2.38/bin/dot.exe
 export PATH="/C/Program Files (x86)/Graphviz2.38/bin:$PATH"
 asciidoctor -r asciidoctor-diagram uml.adoc
@@ -40,5 +40,5 @@ gem install ruby-graphviz
 Download https://sourceforge.net/projects/plantuml/files/plantuml.jar/download?SetFreedomCookie
 
 export PATH="/C/Program Files/Java/jdk1.8.0_121/bin:$PATH"
-cd ~/git/ara/server/uml
+cd ~/git/com.decathlon.ara/server/uml
 java -jar plantuml.jar uml.txt

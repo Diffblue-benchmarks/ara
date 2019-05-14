@@ -3,19 +3,19 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.decathlon.ara</groupId>
-        <artifactId>ara-parent</artifactId>
+        <groupId>com.decathlon.com.decathlon.ara</groupId>
+        <artifactId>com.decathlon.ara-parent</artifactId>
       <version>4.0.0-SNAPSHOT</version>
     </parent>
-    <artifactId>ara-client</artifactId>
+    <artifactId>com.decathlon.ara-client</artifactId>
     <packaging>jar</packaging>
 
-    <name>ara-client</name>
+    <name>com.decathlon.ara-client</name>
     <description>Agile Regression Analyzer - Client</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-      <ara.docUrl></ara.docUrl>
+      <com.decathlon.ara.docUrl></com.decathlon.ara.docUrl>
     </properties>
 
     <build>
@@ -48,7 +48,7 @@
                         </goals>
                         <configuration>
                           <environmentVariables>
-                            <DOC_URL>${ara.docUrl}</DOC_URL>
+                            <DOC_URL>${com.decathlon.ara.docUrl}</DOC_URL>
                           </environmentVariables>
                             <arguments>run build</arguments>
                         </configuration>

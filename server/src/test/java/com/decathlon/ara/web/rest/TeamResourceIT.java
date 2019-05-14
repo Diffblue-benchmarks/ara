@@ -106,7 +106,7 @@ public class TeamResourceIT {
 
         // THEN
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(header(response, HeaderUtil.ALERT)).isEqualTo("ara.team.updated");
+        assertThat(header(response, HeaderUtil.ALERT)).isEqualTo("com.decathlon.ara.team.updated");
         assertThat(header(response, HeaderUtil.PARAMS)).isEqualTo("1");
         assertThat(cut.getAll(PROJECT_CODE).getBody()).containsExactly( // Ordered by name ASC
                 new TeamDTO(Long.valueOf(1), "Renamed", false, false),
@@ -125,7 +125,7 @@ public class TeamResourceIT {
 
         // THEN
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(header(response, HeaderUtil.ALERT)).isEqualTo("ara.team.updated");
+        assertThat(header(response, HeaderUtil.ALERT)).isEqualTo("com.decathlon.ara.team.updated");
         assertThat(header(response, HeaderUtil.PARAMS)).isEqualTo("1");
         assertThatTableHasNotChangedInDataBase();
     }
@@ -208,7 +208,7 @@ public class TeamResourceIT {
 
         // THEN
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(header(response, HeaderUtil.ALERT)).isEqualTo("ara.team.deleted");
+        assertThat(header(response, HeaderUtil.ALERT)).isEqualTo("com.decathlon.ara.team.deleted");
         assertThat(header(response, HeaderUtil.PARAMS)).isEqualTo("1");
         assertThat(cut.getAll(PROJECT_CODE).getBody()).containsExactly( // Ordered by name ASC
                 new TeamDTO(Long.valueOf(3), "Team B", true, true),

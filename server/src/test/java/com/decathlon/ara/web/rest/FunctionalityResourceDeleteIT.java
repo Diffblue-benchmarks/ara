@@ -98,7 +98,7 @@ public class FunctionalityResourceDeleteIT {
     private void deleteAndAssertSuccess(long id) {
         ResponseEntity<Void> response = cut.delete(PROJECT_CODE, id);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(header(response, HeaderUtil.ALERT)).isEqualTo("ara.functionality.deleted");
+        assertThat(header(response, HeaderUtil.ALERT)).isEqualTo("com.decathlon.ara.functionality.deleted");
         assertThat(header(response, HeaderUtil.PARAMS)).isEqualTo(String.valueOf(id));
     }
 

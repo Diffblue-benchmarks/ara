@@ -1,6 +1,6 @@
 package com.decathlon.ara.domain;
 
-import com.decathlon.ara.report.bean.Tag;
+
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
@@ -58,8 +58,8 @@ public class Scenario implements Comparable<Scenario> {
     private boolean ignored;
 
     /**
-     * The {@link Country#code codes of all countries} where this scenario is configured to run.<br>
-     * Can be {@link Tag#COUNTRY_ALL} or one or more codes, separated by commas.<br>
+     * The country code of all the countries where this scenario is configured to run.<br>
+     * Can be COUNTRY_ALL or one or more codes, separated by commas.<br>
      * Eg. "all" or "fr,us"...<br><br>
      * This is not a strict foreign-key association because developers can commit typos and we want to surface these.
      * Used to show the functionality coverage per country.
@@ -69,7 +69,7 @@ public class Scenario implements Comparable<Scenario> {
     private String countryCodes;
 
     /**
-     * The {@link Severity#code severity code} of the scenario, as stated in Version Control System.<br>
+     * The severity code of the scenario, as stated in Version Control System.<br>
      * This is not a strict foreign-key association because developers can commit typos and we want to surface these.
      */
     private String severity;

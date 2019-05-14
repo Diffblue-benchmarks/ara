@@ -3,7 +3,7 @@
 ==== Eclipse Code Formatter
 
 Go to Window -> Preferences -> Java -> Code Style -> Formatter. +
-Import the codestyles/ara-code-style.xml file.
+Import the codestyles/com.decathlon.ara-code-style.xml file.
 
 Then, either:
 

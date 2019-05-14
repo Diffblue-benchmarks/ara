@@ -22,7 +22,7 @@ the context of execution / error in an issue in the project repository, it will 
 The features can also be enable or not directly at the ARA instance startup following this rule :
 
 * the value is setted in system property `-Dara.features.<code>=<state>`
-* if not, the value is setted in the spring application.properties file `ara.features.<code>=<state>`
+* if not, the value is setted in the spring application.properties file `com.decathlon.ara.features.<code>=<state>`
 * if not, the value is `false`.
 
 Where `code` is the code of the feature you want to enable. (You can list all available features with
@@ -37,12 +37,12 @@ the other one.
 Once ARA is up and running, you will have to set up a project in ARA. +
 Projects in ARA are spaces isolated from each other, where all your application test results will get uploaded and reports will be viewable and manipulated by the whole team.
 
-* Go to https://{{your-ara-domain-name}}/#/management/projects +
+* Go to https://{{your-com.decathlon.ara-domain-name}}/#/management/projects +
   image:create-project.png[]
 * You can click the `[ + CREATE THE DEMO PROJECT ]` button,
   play with it and its project settings to be more familiar with what an ARA project looks like.
   You can remove and/or re-create the demo project at any time.
-* Once you are ready, click the `[ + ADD ]` green button in https://{{your-ara-domain-name}}/#/management/projects to create your own project
+* Once you are ready, click the `[ + ADD ]` green button in https://{{your-com.decathlon.ara-domain-name}}/#/management/projects to create your own project
 
 Then, to setup the project, select "MANAGE PROJECT" in the top-left project's drop-down list:
 
@@ -94,7 +94,7 @@ First, you need to know some additional key concepts (that were not configured w
 
 Here is the overall structure of a ZIP for an execution, with a concrete example:
 
-* *the-execution-file-to-upload-to-ara.zip*
+* *the-execution-file-to-upload-to-com.decathlon.ara.zip*
 ** *1542018261233/* - A folder whose name is the timestamp (UTC/GMT+0 number of milliseconds since January 1st, 1970) when the execution started on the continuous integration server
 *** *cycleDefinition.json* - the file describing what tests are supposed to be run by this execution
                              (if executed, sub-folders will contain the outputs of each run,
@@ -132,9 +132,9 @@ if one of the sub-jobs did not run, ARA will show a failed execution because of 
 
 To construct a cycleDefinition.json, see Javadoc of:
 
-* link:../../../server/src/main/java/com/decathlon/ara/ci/bean/CycleDef.java[CycleDef]
-* link:../../../server/src/main/java/com/decathlon/ara/ci/bean/PlatformRule.java[PlatformRule]
-* link:../../../server/src/main/java/com/decathlon/ara/ci/bean/QualityThreshold.java[QualityThreshold]
+* link:../../../server/src/main/java/com/decathlon/com.decathlon.ara/ci/bean/CycleDef.java[CycleDef]
+* link:../../../server/src/main/java/com/decathlon/com.decathlon.ara/ci/bean/PlatformRule.java[PlatformRule]
+* link:../../../server/src/main/java/com/decathlon/com.decathlon.ara/ci/bean/QualityThreshold.java[QualityThreshold]
 
 ==== Example of a Single-Country, Two-Types cycleDefinition.json
 
@@ -180,7 +180,7 @@ Each job folder have a buildInformation.json file. +
 This file describes information about the job that ran either the execution, a deployment or a run or a test-type.
 
 To construct a buildInformation.json, see Javadoc of
-<<../../server/src/main/java/com/decathlon/ara/ci/bean/Build.java, Build>>.
+<<../../server/src/main/java/com/decathlon/com.decathlon.ara/ci/bean/Build.java, Build>>.
 
 ==== Example of an Execution's buildInformation.json
 
@@ -245,21 +245,21 @@ Example:
 ]
 ```
 
-As an example, in Java, just include the ara-lib library. +
+As an example, in Java, just include the com.decathlon.ara-lib library. +
 Here is how to find it with Maven:
 
 ```xml
 <dependency>
-    <groupId>com.decathlon.ara</groupId>
-    <artifactId>ara-lib</artifactId>
-    <version>${ara.version}</version>
+    <groupId>com.decathlon.com.decathlon.ara</groupId>
+    <artifactId>com.decathlon.ara-lib</artifactId>
+    <version>${com.decathlon.ara.version}</version>
 </dependency>
 ```
 
 The library declares the cucumber dependency as provided: you will need a working Cucumber dependency in your project
 for the extractor to work: it will need to access your glue code.
 
-Then, use the `com.decathlon.ara.lib.StepDefinitionExtractor` class like this:
+Then, use the `com.decathlon.com.decathlon.ara.lib.StepDefinitionExtractor` class like this:
 
 ```java
 String outputDirectory = System.getProperty("user.dir"); // Create stepDefinitions.json in the current directory
@@ -314,7 +314,7 @@ The ZIP file will then contain a `team1` folder, and a `subteamA` sub-folder, co
 
 Upload it to:
 
-* URL: `{{ara-domain}}/api/projects/{{project-code}}/scenarios/upload-postman/{{source-code}}`
+* URL: `{{com.decathlon.ara-domain}}/api/projects/{{project-code}}/scenarios/upload-postman/{{source-code}}`
 * HTTP method: `POST`
 * HTTP header: `Content-Type: multipart/form-data`
 * HTTP body: a form field named `file` with the ZIP file content
@@ -327,7 +327,7 @@ This will create a `report.json` without running the scenarios.
 
 Upload it to:
 
-* URL: `{{ara-domain}}/api/projects/{{project-code}}/scenarios/upload/{{source-code}}`
+* URL: `{{com.decathlon.ara-domain}}/api/projects/{{project-code}}/scenarios/upload/{{source-code}}`
 * HTTP method: `POST`
 * HTTP body: the `report.json` file
 

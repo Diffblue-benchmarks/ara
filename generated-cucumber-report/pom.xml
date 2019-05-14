@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.decathlon.ara</groupId>
-        <artifactId>ara-parent</artifactId>
+        <groupId>com.decathlon.com.decathlon.ara</groupId>
+        <artifactId>com.decathlon.ara-parent</artifactId>
         <version>4.0.0-SNAPSHOT</version>
     </parent>
-    <artifactId>ara-generated-cucumber-report</artifactId>
+    <artifactId>com.decathlon.ara-generated-cucumber-report</artifactId>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -20,12 +20,12 @@
         <!-- Including the JAR should only import its generated resources, and not the libraries used during the generation -->
 
         <dependency>
-            <groupId>com.decathlon.ara</groupId>
-            <artifactId>ara-lib</artifactId>
+            <groupId>com.decathlon.com.decathlon.ara</groupId>
+            <artifactId>com.decathlon.ara-lib</artifactId>
             <version>${project.version}</version>
             <scope>compile</scope>
             <exclusions>
-                <!-- ara-lib is designed to integrate with the project's provided version of Cucumber: -->
+                <!-- com.decathlon.ara-lib is designed to integrate with the project's provided version of Cucumber: -->
                 <!-- we override it with a Cucumber fork having another groupId -->
                 <exclusion>
                     <groupId>info.cukes</groupId>
@@ -133,7 +133,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>ara.ReportGenerator</mainClass>
+                    <mainClass>com.decathlon.ara.ReportGenerator</mainClass>
                     <arguments>
                         <argument>${project.build.directory}/generated-resources</argument>
                     </arguments>

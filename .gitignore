@@ -4,9 +4,9 @@
 .classpath
 .project
 target/
-docker/ara/data/
-docker/ara/docker-compose.yml
-docker/ara-server/*.jar
+docker/com.decathlon.ara/data/
+docker/com.decathlon.ara/docker-compose.yml
+docker/com.decathlon.ara-server/*.jar
 docker/data/
-docker/ara/data
+docker/com.decathlon.ara/data
 *dependency-reduced-pom.xml

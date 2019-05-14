@@ -189,14 +189,14 @@ We will be happy to include the library in the open-source version of ARA.
 
 === Usage
 
-In Java, just include the ara-lib library. +
+In Java, just include the com.decathlon.ara-lib library. +
 Here is how to find it with Maven:
 
 ```xml
 <dependency>
-    <groupId>com.decathlon.ara</groupId>
-    <artifactId>ara-lib</artifactId>
-    <version>${ara.version}</version>
+    <groupId>com.decathlon.com.decathlon.ara</groupId>
+    <artifactId>com.decathlon.ara-lib</artifactId>
+    <version>${com.decathlon.ara.version}</version>
 </dependency>
 ```
 
@@ -237,14 +237,14 @@ You can embed different kinds of data:
 * *StructuredEmbedding:* you can define your own data types by inheriting this abstract class: just store the data in `Object data` and redefine `toHtml()` to define its HTML representation
 
 See the
-link:../../../lib/src/main/java/com/decathlon/ara/lib/embed/producer/StructuredEmbedding.java[StructuredEmbedding's doc]
+link:../../../lib/src/main/java/com/decathlon/com.decathlon.ara/lib/embed/producer/StructuredEmbedding.java[StructuredEmbedding's doc]
 for a description of all fields.
 
 You basically have two main classes to deal with structured embeddings (see JavaDoc for more information):
 
-* link:../../../lib/src/main/java/com/decathlon/ara/lib/embed/producer/StructuredEmbeddingsBuilder.java[StructuredEmbeddingsBuilder]
+* link:../../../lib/src/main/java/com/decathlon/com.decathlon.ara/lib/embed/producer/StructuredEmbeddingsBuilder.java[StructuredEmbeddingsBuilder]
   to produce embedding data
-* link:../../../lib/src/main/java/com/decathlon/ara/lib/embed/consumer/StructuredEmbeddingsExtractor.java[StructuredEmbeddingsExtractor]
+* link:../../../lib/src/main/java/com/decathlon/com.decathlon.ara/lib/embed/consumer/StructuredEmbeddingsExtractor.java[StructuredEmbeddingsExtractor]
   to consume embedding data
 
 === Structured Embeddings Recognized by ARA

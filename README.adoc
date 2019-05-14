@@ -50,7 +50,7 @@ In the following, the folder which contains this Readme will be called `ARA_ROOT
 . In the terminal, go back to `ARA_ROOT``
 . Use the command `mvn liquibase:update -Pdev -pl server` to create the database structure.
 . Use the command `mvn clean install -Pdev -DskipTests=true`
-. Go to `ARA_ROOT/final/target` and run `java -Dspring.profiles.active=dev -jar ara-{{YOUR_VERSION}}.jar`
+. Go to `ARA_ROOT/final/target` and run `java -Dspring.profiles.active=dev -jar com.decathlon.ara-{{YOUR_VERSION}}.jar`
 
 == How to Set Up ARA?
 
