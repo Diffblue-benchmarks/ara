@@ -1,13 +1,9 @@
 package com.decathlon.ara.domain;
 
-import com.decathlon.ara.SpringApplicationContext;
-import com.decathlon.ara.common.NotGonnaHappenException;
+
 import com.decathlon.ara.domain.enumeration.DefectExistence;
 import com.decathlon.ara.domain.enumeration.EffectiveProblemStatus;
 import com.decathlon.ara.domain.enumeration.ProblemStatus;
-import com.decathlon.ara.service.DefectService;
-import com.decathlon.ara.service.SettingService;
-import com.decathlon.ara.service.support.Settings;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
@@ -100,7 +96,7 @@ public class Problem implements Comparable<Problem> {
 
     /**
      * This is a de-normalized field (to avoid a seven-tables join all over ARA source code)
-     * holding the {@link Execution#testDateTime} of the first error occurrence for this problem,
+     * holding the testDateTime of the first error occurrence for this problem,
      * or null if the problem never appeared.
      */
     @Column(name = "first_seen_date_time", columnDefinition = "TIMESTAMP")
@@ -109,7 +105,7 @@ public class Problem implements Comparable<Problem> {
 
     /**
      * This is a de-normalized field (to avoid a seven-tables join all over ARA source code)
-     * holding the {@link Execution#testDateTime} of the last error occurrence for this problem,
+     * holding the testDateTime of the last error occurrence for this problem,
      * or null if the problem never appeared.
      */
     @Column(name = "last_seen_date_time", columnDefinition = "TIMESTAMP")
@@ -123,19 +119,15 @@ public class Problem implements Comparable<Problem> {
      */
     @Transient
     public EffectiveProblemStatus getEffectiveStatus() {
-        switch (status) {
-            case OPEN:
-                return EffectiveProblemStatus.OPEN;
-            case CLOSED:
-                // This business logic is also present in another form in ProblemRepositoryImpl.computeStatusPredicate()
-                if (getClosingDateTime() != null && getLastSeenDateTime() != null &&
-                        getClosingDateTime().before(getLastSeenDateTime())) {
-                    return EffectiveProblemStatus.REAPPEARED;
-                }
-                return EffectiveProblemStatus.CLOSED;
-            default:
-                throw new NotGonnaHappenException("New ProblemStatus enum value not supported in code yet: " + status);
+        if (status == ProblemStatus.CLOSED) {
+            // This business logic is also present in another form in ProblemRepositoryImpl.computeStatusPredicate()
+            if (getClosingDateTime() != null && getLastSeenDateTime() != null &&
+                    getClosingDateTime().before(getLastSeenDateTime())) {
+                return EffectiveProblemStatus.REAPPEARED;
+            }
+            return EffectiveProblemStatus.CLOSED;
         }
+        return EffectiveProblemStatus.OPEN;
     }
 
     public void addPattern(ProblemPattern pattern) {
@@ -147,25 +139,6 @@ public class Problem implements Comparable<Problem> {
     public void removePattern(ProblemPattern pattern) {
         patterns.remove(pattern);
         pattern.setProblem(null);
-    }
-
-    @Transient
-    public String getDefectUrl() {
-        // No defect => no URL
-        if (StringUtils.isNotEmpty(defectId)) {
-            final DefectService defectService = SpringApplicationContext.getBean(DefectService.class);
-            final SettingService settingService = SpringApplicationContext.getBean(SettingService.class);
-            // Defects not managed => no URL
-            if (defectService.getAdapter(projectId).isPresent()) {
-                String defectUrlFormat = settingService.get(projectId, Settings.DEFECT_URL_FORMAT);
-                // Defect URL format not configured => warning
-                if (StringUtils.isEmpty(defectUrlFormat)) {
-                    return "please-configure-project-setting-defect-url-format-" + defectId;
-                }
-                return defectUrlFormat.replace("{{id}}", defectId);
-            }
-        }
-        return null;
     }
 
     @Override

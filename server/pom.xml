@@ -337,6 +337,12 @@
             <artifactId>ara-generated-cucumber-report</artifactId>
             <version>${project.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.decathlon.ara</groupId>
+            <artifactId>ara-database</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
     <build>

@@ -1,4 +1,4 @@
-package com.decathlon.ara.ci.bean;
+package com.decathlon.ara.domain.enumeration;
 
 /**
  * @see <a href="http://javadoc.jenkins-ci.org/hudson/model/Result.html">Jenkins Result enum</a>

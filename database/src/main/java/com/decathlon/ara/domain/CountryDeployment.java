@@ -1,7 +1,7 @@
 package com.decathlon.ara.domain;
 
 import com.decathlon.ara.domain.enumeration.JobStatus;
-import com.decathlon.ara.ci.bean.Result;
+import com.decathlon.ara.domain.enumeration.Result;
 import java.util.Comparator;
 import java.util.Date;
 import javax.persistence.Column;

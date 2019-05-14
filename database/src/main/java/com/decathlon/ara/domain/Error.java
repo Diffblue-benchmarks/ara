@@ -39,7 +39,7 @@ import static java.util.Comparator.nullsFirst;
 @EqualsAndHashCode(of = { "executedScenarioId", "stepLine" })
 public class Error implements Comparable<Error> {
 
-    public static final String PROBLEM_PATTERNS_COLLECTION_CACHE = "com.decathlon.ara.domain.Error.problemPatterns";
+    public static final String PROBLEM_PATTERNS_COLLECTION_CACHE = "Error.problemPatterns";
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")

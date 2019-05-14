@@ -2,7 +2,6 @@ package com.decathlon.ara.domain.projection;
 
 import com.decathlon.ara.domain.Country;
 import com.decathlon.ara.domain.Type;
-import com.decathlon.ara.service.dto.stability.CycleStabilityDTO;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.AllArgsConstructor;
@@ -18,7 +17,7 @@ public class ProblemAggregate {
      * Eg. "-----OOEOE" showing the last x executions with '-' being a nonexistent execution, 'O' the problem did not appear (OK) and 'E' the
      * problem appears (ERROR).
      */
-    private final List<CycleStabilityDTO> cycleStabilities = new ArrayList<>();
+    private final List<CycleStability> cycleStabilities = new ArrayList<>();
 
     private long patternCount;
 
